@@ -10,24 +10,35 @@
 <body>
   
   <header>
-    <!-- Sol üst sabit geri butonu -->
-<button id="globalBackBtn" class="btn back-btn hidden">← Geri</button>
+<img src="assets/KnoovyNox logo yeni siyah.png" alt="KNOOVYNOX Logo" class="site-logo">
 
 
     <nav class="navbar">
       <a href="#" class="logo">
         
-<img src="assets/KnoovyNox logo yeni siyah.png" alt="KNOOVYNOX Logo" class="site-logo">
+
 
       </a>
-      <ul class="nav-links">
-        <li><a href="#" data-page="home" class="active">Ana Sayfa</a></li>
-        <li><a href="#" data-page="projects">Projeler</a></li>
-        <li><a href="#" data-page="add-project">Proje Yükle</a></li>
-        <li><a href="#" data-page="control">Projeleri Kontrol Et</a></li>
-        <li><a href="#" data-page="login" id="navLogin">Giriş Yap</a></li>
-        <li><a href="#" data-page="register" id="navRegister">Kayıt Ol</a></li>
-      </ul>
+        <ul class="nav-links">
+      <li><a href="#" data-page="home">🏠 Ana Sayfa</a></li>
+      <li><a href="#" data-page="projects">📁 Projeler</a></li>
+
+      <!-- 📂 Kategoriler Butonu -->
+<li class="nav-item dropdown">
+  <button id="categoryToggle" class="nav-link category-btn">
+    📂 Kategoriler <span class="arrow">▾</span>
+  </button>
+  <div id="categoryMenu" class="category-menu"></div>
+</li>
+
+      <li><a href="#" data-page="add-project">🚀 Proje Yükle</a></li>
+      <li><a href="#" data-page="control">🧩 Kontrol Et</a></li>
+      <li><a href="#" data-page="purchased-projects">💼 Satın Alınanlar</a></li>
+      <li><a href="#" data-page="about">ℹ️ Hakkında</a></li>
+      <li><a href="#" data-page="login" id="navLogin">🔑 Giriş Yap</a></li>
+      <li><a href="#" data-page="register" id="navRegister">📝 Kayıt Ol</a></li>
+    </ul>
+
       
       <!-- Profil / Menü -->
       <div id="profileContainer" class="hidden">
@@ -42,10 +53,13 @@
         </div>
       </div>
     </nav>
+
+    <button id="globalBackBtn" class="btn back-btn">↩️</button>
   </header>
 
   <!-- Ana içerik: script.js sayfaları buraya yükler -->
   <main id="mainContent">
+    
     <!-- Burada proje kartları JS ile üretilecek -->
     <!-- Örnek kart yapısı -->
     <div class="project-card" onclick="window.location.href='view-project.php?id=1'">

@@ -6,6 +6,10 @@
 /* ----- Kalıcı DOM Referansları ----- */
 const mainContent = document.getElementById("mainContent");
 const navLinks = document.querySelectorAll(".nav-links a");
+// === Sayfa geçmişi sistemi ===
+let pageHistory = [];
+let currentPage = "home";
+
 
 /* Profil kontrolleri (header) */
 const profileContainer = document.getElementById("profileContainer");
@@ -216,6 +220,7 @@ const pages = {
       <div id="purchasedProjectList" class="project-list"></div>
     </section>
   `,
+  
   profile: `
     <section>
       <h2>Profil Bilgileriniz</h2>
@@ -235,6 +240,40 @@ const pages = {
       </form>
     </section>
   `
+  ,
+     about: `
+    <section class="about-section">
+      <h2 class="about-title">💡 Knoovynox Hakkında</h2>
+
+      <div class="about-card">
+        <h3>🌍 Vizyonumuz</h3>
+        <p>Knoovynox, yazılımcılar ve öğrenciler için sadece bir proje paylaşım platformu değil, 
+        aynı zamanda fikirlerin büyüyüp iş haline geldiği bir ekosistemdir.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>🚀 Misyonumuz</h3>
+        <p>Geliştiricilerin yeteneklerini sergileyebileceği, diğerleriyle bağlantı kurabileceği 
+        ve üretimden kazanç sağlayabileceği bir ortam yaratmak.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>🤝 Topluluk Kültürü</h3>
+        <p>Birlikte üretmek, paylaşmak ve gelişmek. Knoovynox'ta rekabet değil, 
+        dayanışma esastır. Her proje bir fikrin, her fikir bir fırsatın başlangıcıdır.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>💬 Geliştirici Sözleri</h3>
+        <blockquote>
+          "Knoovynox, kendi yolunu çizen geliştiricilerin buluşma noktasıdır."
+        </blockquote>
+      </div>
+
+      <p class="about-footer">© 2025 Knoovynox — Kodlayanların fikri burada değer bulur.</p>
+    </section>
+  `,
+
 };
 
 /* ----- SAYFA YÜKLEME ----- */
@@ -379,7 +418,7 @@ navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const page = e.currentTarget.dataset.page; // currentTarget güvenli
-    if (page) loadPage(page);
+    loadPage(page);
   });
 });
 
@@ -744,6 +783,56 @@ function loadPage(page) {
     link.classList.toggle("active", link.dataset.page === page);
   });
   mainContent.innerHTML = pages[page] || "<h2>Sayfa bulunamadı</h2>";
+
+
+function loadPage(page) {
+  if (currentPage && currentPage !== page) {
+    pageHistory.push(currentPage);
+  }
+  currentPage = page;
+
+  console.log("📄 Yüklenen sayfa:", page);
+
+  // === Fade geçiş efekti ===
+  const mainContent = document.getElementById("mainContent");
+  if (mainContent) {
+    // Önce sayfayı şeffaf yap
+    mainContent.classList.add("fade-enter");
+    mainContent.classList.remove("fade-enter-active");
+
+    // Küçük gecikmeyle görünür hale getir
+    setTimeout(() => {
+      mainContent.classList.add("fade-enter-active");
+    }, 20);
+
+    // 400ms sonra sınıfları temizle
+    setTimeout(() => {
+      mainContent.classList.remove("fade-enter", "fade-enter-active");
+    }, 420);
+  }
+
+  // Burada senin mevcut sayfa yükleme işlemlerin devam edecek
+  // Örneğin: renderPage(page) veya içeriği fetch etmek
+}
+
+
+  // === Sayfa geçmişi kontrolü ===
+let pageHistory = [];
+let currentPage = "home";
+
+function loadPage(page) {
+  // Eski sayfayı geçmişe ekle
+  if (currentPage && currentPage !== page) {
+    pageHistory.push(currentPage);
+  }
+
+  currentPage = page;
+  console.log("📄 Yüklenen sayfa:", page);
+
+  // Buraya zaten var olan sayfa yükleme işlemini koy
+  // Örneğin: mainContent.innerHTML = ...
+}
+
 
   // Projeler sayfası
   if (page === "projects") {
@@ -1676,24 +1765,33 @@ function loadPage(page) {
   navLinks.forEach((link) => {
     link.classList.toggle("active", link.dataset.page === page);
   });
-  
- // Geri butonu tanımlama
-const backBtn = document.getElementById("globalBackBtn");
 
-function toggleBackBtn() {
-  if (history.length > 1) {
-    backBtn.classList.remove("hidden");
-  } else {
-    backBtn.classList.add("hidden");
-  }
-}
+// ==========================
+// Geri Butonu (her zaman görünür)
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const backBtn = document.getElementById("globalBackBtn");
 
-backBtn.addEventListener("click", () => {
-  if (document.referrer) {
-    history.back();
-  } else {
-    loadPage("home");
+
+  // Eğer buton DOM'da yoksa hiçbir şey yapma (hata önleme)
+  if (!backBtn) {
+    console.warn("⚠️ Geri butonu bulunamadı, script atlandı.");
+    return;
   }
+
+  // Görünür hale getir
+  backBtn.classList.remove("hidden");
+
+  // Tıklama davranışı
+  backBtn.addEventListener("click", () => {
+    if (document.referrer && document.referrer !== window.location.href) {
+      history.back();
+    } else {
+      loadPage("home");
+      backBtn.classList.remove("hidden");
+
+    }
+  });
 });
 
 
@@ -2011,4 +2109,155 @@ if (parseInt(proj.user_id) === (currentUser?.id || 0)) {
 }
   });
 }
-}
+}window.addEventListener("DOMContentLoaded", () => {
+  const backBtn = document.getElementById("globalBackBtn");
+  if (!backBtn) return;
+
+  backBtn.classList.remove("hidden");
+
+  backBtn.addEventListener("click", () => {
+    console.log("↩️ Geri butonuna tıklandı.");
+
+    if (pageHistory.length > 0) {
+      const lastPage = pageHistory.pop();
+      console.log("🔙 Dönülen sayfa:", lastPage);
+      loadPage(lastPage);
+    } else {
+      console.log("🏠 Geçmiş yok, ana sayfaya dönülüyor.");
+      loadPage("home");
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const categoryToggle = document.getElementById("categoryToggle");
+  const categoryMenu = document.getElementById("categoryMenu");
+
+  if (!categoryToggle || !categoryMenu) return;
+
+  // Menü oluşturma
+  categoryMenu.innerHTML = Object.keys(SUBTYPES).map(type => `
+    <li data-type="${type}">
+      ${typeEmoji[type]} ${type}
+      <ul class="subtype-menu">
+        ${SUBTYPES[type].map(sub => `<li data-subtype="${sub}">${sub}</li>`).join('')}
+      </ul>
+    </li>
+  `).join('');
+
+  // Menü açma/kapama
+  categoryToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    categoryMenu.classList.toggle("active");
+  });
+
+  // Alt tür seçimi
+  categoryMenu.addEventListener("click", (e) => {
+    const subtype = e.target.dataset.subtype;
+    const type = e.target.closest("li[data-type]")?.dataset.type;
+
+    if (subtype && typeof filterProjectsByCategory === "function") {
+      console.log(`📂 Seçilen tür: ${type} → Alt tür: ${subtype}`);
+      filterProjectsByCategory(subtype);
+      categoryMenu.classList.remove("active");
+    }
+  });
+
+  // Dışarı tıklanınca menüyü kapat
+  document.addEventListener("click", (event) => {
+    if (!categoryMenu.contains(event.target) && !categoryToggle.contains(event.target)) {
+      categoryMenu.classList.remove("active");
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("categoryToggle");
+  const menu = document.getElementById("categoryMenu");
+
+  if (!toggle || !menu) return;
+
+  // Menü içeriğini dinamik oluştur
+  menu.innerHTML = `
+    <ul>
+      ${Object.entries(SUBTYPES).map(([type, subs]) => `
+        <li>
+          ${typeEmoji[type] || "📁"} ${type}
+          <ul class="subtype-menu">
+            ${subs.map(sub => `<li data-type="${type}" data-subtype="${sub}">${sub}</li>`).join('')}
+          </ul>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+
+  // Menü aç/kapat
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("active");
+  });
+
+  // Menü dışına tıklayınca kapanır
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+  // Alt tür tıklanınca proje sayfasına yönlendirme
+  menu.addEventListener("click", (e) => {
+    const sub = e.target.dataset.subtype;
+    const type = e.target.dataset.type;
+    if (sub && type) {
+      localStorage.setItem("selectedType", type);
+      localStorage.setItem("selectedSubtype", sub);
+      loadPage("projects");
+      menu.classList.remove("active");
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("categoryToggle");
+  const menu = document.getElementById("categoryMenu");
+
+  if (!toggle || !menu) return;
+
+  // Menü içeriğini oluştur
+  menu.innerHTML = `
+    <ul>
+      ${Object.entries(SUBTYPES).map(([type, subs]) => `
+        <li>
+          ${typeEmoji[type] || "📁"} ${type}
+          <ul class="subtype-menu">
+            ${subs.map(sub => `<li data-type="${type}" data-subtype="${sub}">${sub}</li>`).join('')}
+          </ul>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+
+  // Menü aç/kapat
+  toggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("active");
+  toggle.classList.toggle("active"); // ok yönünü değiştir
+});
+
+  // Menü dışına tıklayınca kapanır
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+  // Alt tür seçimi → filtreleme
+  menu.addEventListener("click", (e) => {
+    const subtype = e.target.dataset.subtype;
+    const type = e.target.dataset.type;
+    if (subtype && type) {
+      console.log(`Seçildi: ${type} → ${subtype}`);
+      if (typeof filterProjectsByCategory === "function") {
+        filterProjectsByCategory(subtype);
+      }
+      menu.classList.remove("active");
+    }
+  });
+});
