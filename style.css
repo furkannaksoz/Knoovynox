@@ -1,0 +1,2685 @@
+/* Genel ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1E3A8A 0%, #FFFFFF 100%);
+    color: #000000;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mevcut stillerin geri kalanı korunuyor */
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: #1E3A8A;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 0 0 15px 15px;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+}
+
+.navbar {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 2rem;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+#siteLogo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    margin-right: 0.75rem;
+}
+
+#siteLogo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #FFFFFF;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background-color: #FFFFFF;
+    color: #1E3A8A;
+    transform: scale(1.05);
+    outline: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+#profileContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
+
+#profileMenuBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#profileAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #FFFFFF;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#profileUsername {
+    color: #000000;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+#profileContainer:hover #profileAvatar {
+    box-shadow: 0 0 12px #FFFFFF;
+    transform: scale(1.1);
+}
+
+#profileMenu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 250px;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#profileMenu.hidden {
+    display: none;
+}
+
+#profileMenu button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    color: #000000;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#profileMenu button:hover {
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    transform: translateX(5px);
+}
+
+#profileDetailsForm {
+    padding: 1.5rem 3rem;
+    max-width: 500px;
+    margin: 1.5rem auto 3rem auto;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#profileDetailsForm label {
+    font-weight: 600;
+    color: #000000;
+    margin-top: 1.2rem;
+    display: block;
+}
+
+#profileDetailsForm input,
+#profileDetailsForm select {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+#profileDetailsForm input:focus,
+#profileDetailsForm select:focus {
+    border-color: #1E3A8A;
+    outline: none;
+    background-color: #F5F5F5;
+    transform: scale(1.02);
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
+    margin: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2rem 6rem;
+}
+
+main:focus {
+    box-shadow: none;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    background: transparent;
+}
+
+h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 2rem; }
+
+p {
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto 4rem auto;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
+.projects-section {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 0;
+}
+
+.purchased-projects-section, .control-projects-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
+.filter-sidebar {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
+    margin-top: 0;
+}
+
+.filter-sidebar h3 { margin-bottom: 1.5rem; font-size: 1.8rem; }
+
+.filter-sidebar form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.filter-sidebar label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+.filter-sidebar input[type="checkbox"] { width: 20px; height: 20px; }
+
+.filter-sidebar input[type="text"],
+.filter-sidebar input[type="number"],
+.filter-sidebar select {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.filter-sidebar input[type="text"]:focus,
+.filter-sidebar input[type="number"]:focus,
+.filter-sidebar select:focus {
+    border-color: #1E3A8A;
+    outline: none;
+    background-color: #F5F5F5;
+    transform: scale(1.02);
+}
+
+.filter-sidebar .btn {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 14px 20px;
+}
+
+.projects-content { flex-grow: 1; }
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 3rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid transparent;
+    font-weight: 500;
+    color: #000000;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.project-card:hover {
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A8A;
+    transform: translateY(-10px) scale(1.02);
+}
+
+.project-card:active { transform: translateY(-5px); }
+
+.project-card h3 {
+    font-weight: 900;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.project-card p {
+    font-size: 1.3rem;
+    color: #000000;
+    flex-grow: 1;
+    line-height: 1.7;
+}
+
+.project-card img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+.project-card img:hover { transform: scale(1.1); }
+
+a.download-link {
+    color: #1E3A8A;
+    font-weight: 700;
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a.download-link:hover {
+    color: #000000;
+    text-decoration: underline;
+    transform: translateX(8px);
+}
+
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.3rem;
+    color: #000000;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+label {
+    font-weight: 600;
+    color: #000000;
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    border: 2.5px solid #000000;
+    background-color: #FFFFFF;
+    color: #000000;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}
+
+input[type="file"] { padding: 12px 16px; }
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus,
+input[type="file"]:focus {
+    outline: none;
+    border-color: #1E3A8A;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    background-color: #F5F5F5;
+    transform: scale(1.02);
+}
+
+.btn {
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    align-self: center;
+    user-select: none;
+}
+
+.btn:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active { transform: translateY(-3px); }
+
+.btn-small {
+    padding: 10px 18px;
+    font-size: 1.1rem;
+    border-radius: 18px;
+    width: auto;
+    box-shadow: none;
+    margin-left: 0.75rem;
+}
+
+.message {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    user-select: none;
+    min-height: 1.4em;
+    color: #000000;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    margin-top: 8rem;
+    border-radius: 15px 15px 0 0;
+    font-weight: 600;
+    user-select: none;
+    font-size: 1.2rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show { display: flex; opacity: 1; }
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+.modal.show .modal-content { transform: scale(1); opacity: 1; }
+
+.close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000000;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close:hover { color: #1E3A8A; transform: rotate(90deg); }
+
+/* Proje detay modal stilleri */
+#projectDetailModal .modal-content { max-width: 800px; padding: 3rem; }
+
+#projectDetailContent { display: flex; flex-direction: column; gap: 1.5rem; }
+
+#projectDetailContent img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+#projectDetailContent img:hover { transform: scale(1.1); }
+
+#projectDetailContent p { text-align: left; margin: 0; font-size: 1.3rem; }
+
+#buyProjectBtn { align-self: center; margin-top: 2rem; }
+
+/* Ödeme modal stilleri */
+#paymentForm { max-width: 500px; margin: 0 auto; }
+
+#paymentForm input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-top: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#paymentForm input:focus {
+    border-color: #1E3A8A;
+    outline: none;
+    background-color: #F5F5F5;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+/* Satın alınan proje detay modal stilleri */
+#purchasedProjectDetailModal .modal-content { max-width: 800px; padding: 3rem; }
+
+#purchasedProjectDetailContent { display: flex; flex-direction: column; gap: 1.5rem; }
+
+#purchasedProjectDetailContent img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+#purchasedProjectDetailContent img:hover { transform: scale(1.1); }
+
+#purchasedProjectDetailContent p { text-align: left; margin: 0; font-size: 1.3rem; }
+
+/* Satın alınan projeler ve projeleri kontrol et sayfası stilleri */
+.purchased-projects-section .project-list,
+.control-projects-section .project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 3rem;
+    padding-right: 0.75rem;
+    max-height: none;
+    overflow-y: auto;
+}
+
+.purchased-projects-section .project-card,
+.control-projects-section .project-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid transparent;
+    font-weight: 500;
+    color: #000000;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.purchased-projects-section .project-card:hover,
+.control-projects-section .project-card:hover {
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A8A;
+    transform: translateY(-10px) scale(1.02);
+}
+
+.purchased-projects-section .project-card:active,
+.control-projects-section .project-card:active { transform: translateY(-5px); }
+
+.purchased-projects-section .project-card h3,
+.control-projects-section .project-card h3 {
+    font-weight: 900;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.purchased-projects-section .project-card p,
+.control-projects-section .project-card p {
+    font-size: 1.3rem;
+    color: #000000;
+    flex-grow: 1;
+    line-height: 1.7;
+}
+
+.purchased-projects-section .project-card img,
+.control-projects-section .project-card img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+
+.purchased-projects-section .project-card img:hover,
+.control-projects-section .project-card img:hover { transform: scale(1.1); }
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive tasarım */
+@media (max-width: 1024px) {
+    header { padding: 1.2rem 2rem; }
+    .navbar { max-width: 100%; }
+    .nav-links { gap: 1.5rem; }
+    main { padding: 2rem 2rem; }
+    .projects-section { flex-direction: column; align-items: stretch; }
+    .filter-sidebar { width: 100%; margin-top: 0; }
+    .project-list { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .purchased-projects-section .project-list,
+    .control-projects-section .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    body { background: linear-gradient(135deg, #1E3A8A 0%, #FFFFFF 80%); }
+}
+
+@media (max-width: 768px) {
+    header { border-radius: 0; padding: 1rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .navbar { max-width: 100%; flex-wrap: wrap; gap: 1rem; padding: 0; justify-content: center; }
+    .nav-links { gap: 1rem; justify-content: center; width: 100%; }
+    main { padding: 1.5rem 1.5rem; margin: 0; }
+    section { padding: 1rem; }
+    .projects-section { flex-direction: column; }
+    .purchased-projects-section .project-list,
+    .control-projects-section .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+    .filter-sidebar { width: 100%; margin-bottom: 2rem; margin-top: 0; }
+    .project-list { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    form { width: 100%; padding: 1rem; }
+    .btn { width: 100%; }
+    .modal-content { width: 95%; padding: 2rem; }
+    #siteLogo { height: 36px; }
+    #profileUsername { font-size: 1rem; }
+    #projectDetailModal .modal-content,
+    #purchasedProjectDetailModal .modal-content { max-width: 95%; }
+    .purchased-projects-section .project-card,
+    .control-projects-section .project-card { padding: 1.5rem; }
+    .purchased-projects-section .project-card img,
+    .control-projects-section .project-card img { max-height: 200px; }
+    body { background: linear-gradient(135deg, #1E3A8A 0%, #FFFFFF 90%); }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-30px); }
+        to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to   { opacity: 1; transform: scale(1); }
+    }
+}
+
+/* --- FIX: Control Projects grid'i zorla ve min kolon genişliğini düşür --- */
+.control-projects-section .project-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem !important;
+}
+
+.control-projects-section .project-list[style*="display"] { display: grid !important; }
+
+.control-projects-section .project-list > * {
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .control-projects-section .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem !important;
+    }
+}
+
+/* === PROJELERİ KONTROL ET → Grid'i zorla ve geniş uyumluluk === */
+#controlProjectsList,
+#controlProjectList,
+.control-projects-list,
+.control-projects-section .project-list,
+[data-page="control"] .project-list,
+#mainContent .control-projects-section .project-list,
+#mainContent [data-section="control"] .project-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 3rem !important;
+    align-items: start;
+}
+
+#controlProjectsList[style*="display"],
+#controlProjectList[style*="display"],
+.control-projects-list[style*="display"],
+.control-projects-section .project-list[style*="display"],
+[data-page="control"] .project-list[style*="display"] { display: grid !important; }
+
+#controlProjectsList > *,
+#controlProjectList > *,
+.control-projects-list > *,
+.control-projects-section .project-list > *,
+[data-page="control"] .project-list > * {
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0;
+}
+
+#controlProjectsList > li,
+#controlProjectList > li,
+.control-projects-list > li,
+.control-projects-section .project-list > li,
+[data-page="control"] .project-list > li { list-style: none; }
+
+@media (max-width: 768px) {
+    #controlProjectsList,
+    #controlProjectList,
+    .control-projects-list,
+    .control-projects-section .project-list,
+    [data-page="control"] .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        gap: 1.5rem !important;
+    }
+}
+
+/* === FIX 1: Kart içi metin taşmalarını engelle === */
+.project-card h3,
+.project-card p,
+.project-card a,
+.project-card .description,
+#projectDetailContent p,
+#purchasedProjectDetailContent p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.project-card a.download-link {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+}
+
+/* === FIX 2: Satın Alınan Projeler listesini grid yap === */
+#purchasedProjectList {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 2rem !important;
+    align-items: start;
+    padding-right: 0.75rem;
+}
+
+#purchasedProjectList > * {
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0;
+}
+
+#purchasedProjectsModal .modal-content {
+    max-height: 90vh;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    #purchasedProjectList {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+/* === PROJELER SAYFASI GÖRÜNÜMÜNÜ DİĞER LİSTELERE AYNEN UYGULA === */
+#controlProjectsList,
+#purchasedProjectList {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)) !important;
+    gap: 3rem !important;
+    padding-right: 0.75rem;
+    align-items: start;
+}
+
+#controlProjectsList > *,
+#purchasedProjectList > * {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid transparent;
+    font-weight: 500;
+    color: #000000;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0;
+}
+
+#controlProjectsList > *:hover,
+#purchasedProjectList > *:hover {
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A8A;
+    transform: translateY(-10px) scale(1.02);
+}
+#controlProjectsList > *:active,
+#purchasedProjectList > *:active { transform: translateY(-5px); }
+
+#controlProjectsList > * h3,
+#purchasedProjectList > * h3 {
+    font-weight: 900;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+#controlProjectsList > * p,
+#purchasedProjectList > * p {
+    font-size: 1.3rem;
+    color: #000000;
+    flex-grow: 1;
+    line-height: 1.7;
+    text-align: left;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+}
+#controlProjectsList > * img,
+#purchasedProjectList > * img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease;
+    animation: zoomIn 0.5s ease-in-out;
+}
+#controlProjectsList > * img:hover,
+#purchasedProjectList > * img:hover { transform: scale(1.1); }
+
+#controlProjectsList > * a,
+#purchasedProjectList > * a {
+    color: #1E3A8A;
+    font-weight: 700;
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    max-width: 100%;
+    white-space: normal;
+}
+#controlProjectsList > * a:hover,
+#purchasedProjectList > * a:hover {
+    color: #000000;
+    text-decoration: underline;
+    transform: translateX(8px);
+}
+
+@media (max-width: 1024px) {
+    #controlProjectsList,
+    #purchasedProjectList {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    }
+}
+@media (max-width: 768px) {
+    #controlProjectsList,
+    #purchasedProjectList {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        gap: 1.5rem !important;
+    }
+    #controlProjectsList > *,
+    #purchasedProjectList > * { padding: 1.5rem; }
+    #controlProjectsList > * img,
+    #purchasedProjectList > * img { max-height: 200px; }
+}
+
+/* === KONTROL SAYFASI: Çok satırlı grid (sonsuz yatay yok) === */
+body:has(.nav-links a[data-page="control"].active) #mainContent .project-list,
+body:has(.nav-links a[data-page="control"].active) #mainContent [class*="project-list"],
+body:has(.nav-links a[data-page="control"].active) #mainContent [id*="ProjectList"],
+body:has(.nav-links a[data-page="control"].active) #mainContent [id*="projectList"],
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important;
+    gap: 2rem !important;
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+}
+
+/* Flex’ten kalan sabit genişlikleri tamamen sıfırla */
+body:has(.nav-links a[data-page="control"].active) #mainContent .project-list > *,
+body:has(.nav-links a[data-page="control"].active) #mainContent [class*="project-list"] > *,
+body:has(.nav-links a[data-page="control"].active) #mainContent [id*="ProjectList"] > *,
+body:has(.nav-links a[data-page="control"].active) #mainContent [id*="projectList"] > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+/* === PROJELERİ KONTROL ET: Ekrana göre tam dolan çok satırlı grid === */
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list {
+    display: grid !important;
+    gap: 2.5rem !important;
+    /* küçük ekran varsayılanı: esnek */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+}
+
+/* Orta ekran: 2 sütun */
+@media (min-width: 900px) {
+    body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Büyük ekran: 3 sütun */
+@media (min-width: 1200px) {
+    body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Çok büyük ekran: 4 sütun (sayfayı dolu gösterir) */
+@media (min-width: 1600px) {
+    body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Eski sabit genişlik/flex kalıntılarını nötrle (garanti) */
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-list > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* === PROJELERİ KONTROL ET: Değiştir / Sil butonları arası boşluk === */
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card .actions {
+    display: flex;
+    gap: 0.75rem;          /* butonlar arası boşluk */
+    flex-wrap: wrap;       /* dar alanda alta da geçebilsin */
+    margin-top: auto;      /* aksiyonları kart altına yasla (varsa) */
+}
+
+/* .actions yoksa bitişik butonları yine ayır */
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card .btn + .btn,
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card button + button,
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card .btn + a,
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card a + .btn,
+body:has(.nav-links a[data-page="control"].active) #mainContent .control-projects-section .project-card a + a {
+    margin-left: 0.75rem;
+}
+/* ====== PROJELERİ KONTROL ET — tam dolan çok satırlı grid ====== */
+/* Daha yüksek özgüllük için #mainContent ile hedefliyoruz */
+#mainContent .control-projects-section .project-list,
+#mainContent #controlProjectsList {
+    display: grid !important;
+    gap: 2.5rem !important;
+    /* varsayılan (küçük/orta ekran) */
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+/* >=1200px: 3 kolon */
+@media (min-width: 1200px) {
+    #mainContent .control-projects-section .project-list,
+    #mainContent #controlProjectsList {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* >=1600px: 4 kolon (geniş ekranı tam doldurur) */
+@media (min-width: 1600px) {
+    #mainContent .control-projects-section .project-list,
+    #mainContent #controlProjectsList {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* <900px: 1 kolon (dar ekran) */
+@media (max-width: 899.98px) {
+    #mainContent .control-projects-section .project-list,
+    #mainContent #controlProjectsList {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Eski flex/sabit genişlik mirasını tamamen nötrle */
+#mainContent .control-projects-section .project-list > *,
+#mainContent #controlProjectsList > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* ====== Butonlar: Değiştir / Sil arası boşluk ====== */
+#mainContent .control-projects-section .project-card .actions {
+    display: flex;
+    gap: 0.75rem;           /* butonlar dip dibe olmasın */
+    flex-wrap: wrap;
+    margin-top: auto;       /* aksiyonları kart altına itmek istersen */
+}
+
+/* .actions yoksa da komşu butonları ayır */
+#mainContent .control-projects-section .project-card .btn + .btn,
+#mainContent .control-projects-section .project-card button + button,
+#mainContent .control-projects-section .project-card .btn + a,
+#mainContent .control-projects-section .project-card a + .btn,
+#mainContent .control-projects-section .project-card a + a {
+    margin-left: 0.75rem;
+}
+/* === PROJELERİ KONTROL ET — sayfayı dolu gösteren çok satırlı grid === */
+/* Not: minmax(0, 1fr) ile kartlar 450px sınırına takılmadan sütunlara sığar */
+#mainContent .control-projects-section .project-list {
+    display: grid !important;
+    gap: 2.5rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  /* varsayılan: 2 sütun */
+}
+
+/* >=1200px: 3 sütun */
+@media (min-width: 1200px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* >=1600px: 4 sütun — geniş ekranı tam doldurur */
+@media (min-width: 1600px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+/* <900px: 1 sütun (mobil) */
+@media (max-width: 899.98px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Eski sabit genişlik/flex mirasını nötrle (garanti olsun) */
+#mainContent .control-projects-section .project-list > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* === Buton arası boşluk: Değiştir / Sil === */
+#mainContent .control-projects-section .project-card .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem; /* butonlar kart içeriğinden biraz ayrılsın */
+}
+
+/* .actions sarmalı yoksa da komşu butonları ayır */
+#mainContent .control-projects-section .project-card .btn + .btn,
+#mainContent .control-projects-section .project-card button + button,
+#mainContent .control-projects-section .project-card .btn + a,
+#mainContent .control-projects-section .project-card a + .btn,
+#mainContent .control-projects-section .project-card a + a {
+    margin-left: 0.75rem;
+}
+/* ====== KONTROL SAYFASI — tam dolan çok satırlı grid (kesin override) ====== */
+#mainContent .control-projects-section .project-list {
+    display: grid !important;
+    gap: 2.5rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* varsayılan: 2 sütun */
+}
+
+/* >=1200px: 3 sütun */
+@media (min-width: 1200px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* >=1600px: 4 sütun (geniş ekranı doldurur) */
+@media (min-width: 1600px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+/* <900px: 1 sütun (mobil) */
+@media (max-width: 899.98px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Önceden kalmış sabit genişlik/flex mirasını sıfırla (garanti) */
+#mainContent .control-projects-section .project-list > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* ====== Butonlar: Değiştir / Sil arası boşluk ====== */
+#mainContent .control-projects-section .project-card .actions {
+    display: flex;
+    gap: 0.75rem;    /* butonlar dip dibe olmasın */
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* .actions yoksa da komşu butonları ayır */
+#mainContent .control-projects-section .project-card .btn + .btn,
+#mainContent .control-projects-section .project-card button + button,
+#mainContent .control-projects-section .project-card .btn + a,
+#mainContent .control-projects-section .project-card a + .btn,
+#mainContent .control-projects-section .project-card a + a {
+    margin-left: 0.75rem;
+}
+/* === PROJELERİ KONTROL ET → çok satırlı, ekranı dolduran grid === */
+/* Varsayılan: 2 kolon */
+#mainContent .control-projects-section .project-list {
+    display: grid !important;
+    gap: 2.5rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* 1100px+ : 3 kolon */
+@media (min-width: 1100px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* 1500px+ : 4 kolon (geniş ekranı tam doldurur) */
+@media (min-width: 1500px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+/* 900px altı: 1 kolon (mobil) */
+@media (max-width: 899.98px) {
+    #mainContent .control-projects-section .project-list {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Eski flex/sabit genişlik kalıntılarını tamamen nötrle */
+#mainContent .control-projects-section .project-list > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* === 'Değiştir' & 'Sil' butonları arası boşluk === */
+#mainContent .control-projects-section .project-card .actions {
+    display: flex;
+    gap: 0.8rem;          /* butonlar dip dibe olmasın */
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* .actions yoksa da komşu butonları ayır (yedek) */
+#mainContent .control-projects-section .project-card .btn + .btn,
+#mainContent .control-projects-section .project-card button + button,
+#mainContent .control-projects-section .project-card .btn + a,
+#mainContent .control-projects-section .project-card a + .btn,
+#mainContent .control-projects-section .project-card a + a {
+    margin-left: 0.8rem;
+}
+/* === GENİŞ KAPSAM: #mainContent içindeki Listeleri grid yap ve ekranı doldur === */
+/* Not: [id*="List"] -> controlProjectsList, purchasedProjectList gibi SPA id'lerini yakalar */
+#mainContent [class*="project-list"],
+#mainContent [id*="List"] {
+    display: grid !important;
+    gap: 2.5rem !important;
+    /* Küçük/orta ekran varsayılanı: 2 kolon */
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+}
+
+/* 1200px ve üzeri: 3 kolon */
+@media (min-width: 1200px) {
+  #mainContent [class*="project-list"],
+  #mainContent [id*="List"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 1600px ve üzeri: 4 kolon (geniş ekranı tam doldurur) */
+@media (min-width: 1600px) {
+  #mainContent [class*="project-list"],
+  #mainContent [id*="List"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 900px altı: 1 kolon (mobil) */
+@media (max-width: 899.98px) {
+  #mainContent [class*="project-list"],
+  #mainContent [id*="List"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Önceden kalmış sabit genişlik/flex mirasını sıfırla (garanti) */
+#mainContent [class*="project-list"] > *,
+#mainContent [id*="List"] > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* === 'Değiştir' & 'Sil' butonları arası boşluk (Kontrol kartları) === */
+#mainContent .project-card .actions {
+    display: flex;
+    gap: 0.8rem;           /* butonlar dip dibe olmasın */
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* .actions yoksa da komşu butonları ayır (yedek) */
+#mainContent .project-card .btn + .btn,
+#mainContent .project-card button + button,
+#mainContent .project-card .btn + a,
+#mainContent .project-card a + .btn,
+#mainContent .project-card a + a {
+    margin-left: 0.8rem;
+}
+/* === PROJELERİ KONTROL ET — kesin override (id: controlProjectList) === */
+/* Varsayılan: 2 sütun */
+#mainContent #controlProjectList {
+    display: grid !important;
+    gap: 2.5rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+}
+
+/* 1200px+ : 3 sütun */
+@media (min-width: 1200px) {
+  #mainContent #controlProjectList {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 1600px+ : 4 sütun (geniş ekranı tam doldurur) */
+@media (min-width: 1600px) {
+  #mainContent #controlProjectList {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 900px altı : 1 sütun (mobil) */
+@media (max-width: 899.98px) {
+  #mainContent #controlProjectList {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Olası eski flex/sabit genişlik kalıntılarını tamamen nötrle */
+#mainContent #controlProjectList > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* === 'Değiştir' & 'Sil' butonları arası boşluk === */
+/* renderControlProjects() içinde butonlar son <div> içinde: ona layout veriyoruz */
+#mainContent #controlProjectList .project-card > div:last-of-type {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem !important; /* inline style olsa bile nefes kalsın */
+}
+
+/* Yedek: .actions sarmalı yoksa komşu butonları yine ayır */
+#mainContent #controlProjectList .project-card .btn + .btn,
+#mainContent #controlProjectList .project-card button + button,
+#mainContent #controlProjectList .project-card .btn + a,
+#mainContent #controlProjectList .project-card a + .btn,
+#mainContent #controlProjectList .project-card a + a {
+    margin-left: 0.8rem;
+}
+/* === SATIN ALINAN PROJELER — kesin override (id: purchasedProjectList) === */
+/* Not: hem ana sayfadaki section, hem modal içindeki liste için kuruyoruz */
+#mainContent #purchasedProjectList,
+#purchasedProjectsModal #purchasedProjectList {
+    display: grid !important;
+    gap: 2.5rem !important;
+    /* varsayılan: 2 sütun */
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+}
+
+/* 1200px+ : 3 sütun */
+@media (min-width: 1200px) {
+  #mainContent #purchasedProjectList,
+  #purchasedProjectsModal #purchasedProjectList {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 1600px+ : 4 sütun — geniş ekranı doldurur */
+@media (min-width: 1600px) {
+  #mainContent #purchasedProjectList,
+  #purchasedProjectsModal #purchasedProjectList {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 900px altı : 1 sütun (mobil) */
+@media (max-width: 899.98px) {
+  #mainContent #purchasedProjectList,
+  #purchasedProjectsModal #purchasedProjectList {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Eski flex/sabit genişlik kalıntılarını sıfırla */
+#mainContent #purchasedProjectList > *,
+#purchasedProjectsModal #purchasedProjectList > * {
+    flex: initial !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+/* Kart içindeki indirme linki vs. nefes alsın */
+#mainContent #purchasedProjectList .project-card a.download-link,
+#purchasedProjectsModal #purchasedProjectList .project-card a.download-link {
+    margin-top: .75rem;
+}
+
+/* (Opsiyonel) Kartlar arası hover efekti projeler sayfasıyla aynı kalsın */
+#mainContent #purchasedProjectList > *:hover,
+#purchasedProjectsModal #purchasedProjectList > *:hover {
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A8A;
+    transform: translateY(-10px) scale(1.02);
+}
+/* === KONTROL: Kart boylarını eşitle (simasi gibi) === */
+#mainContent #controlProjectList {
+    align-items: stretch !important;                 /* grid hücreleri aynı yükseklikte gerilsin */
+}
+
+#mainContent #controlProjectList .project-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 600px;                               /* tüm kartlar için sabit alt limit (gerekiyorsa arttır/azalt) */
+}
+
+/* Başlık: en fazla 2 satır */
+#mainContent #controlProjectList .project-card h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;                           /* 2 satırda kes */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Açıklama (h3'ten hemen sonraki p): en fazla 4 satır */
+#mainContent #controlProjectList .project-card h3 + p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;                           /* 4 satırda kes */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;                                 /* kart içinde daha doğal akış */
+}
+
+/* Meta satırı (Tür/Fiyat/Yükleyen) taşmasın */
+#mainContent #controlProjectList .project-card h3 + p + p {
+    overflow-wrap: anywhere;
+}
+
+/* Görsel yüksekliği sabit tut (kart yükseklikleri tutarlı kalsın) */
+#mainContent #controlProjectList .project-card img {
+    height: 240px;                                   /* sabit görsel yüksekliği */
+    max-height: none !important;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* İndir linki satırı çok yer kaplamasın */
+#mainContent #controlProjectList .project-card a.download-link {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* En alttaki buton bloğunu karta sabitle ve aralarını aç */
+#mainContent #controlProjectList .project-card > div:last-of-type {
+    margin-top: auto !important;                     /* butonlar en alta otursun */
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+/* Butonlar dip dibe kalmasın (yedek) */
+#mainContent #controlProjectList .project-card .btn + .btn,
+#mainContent #controlProjectList .project-card button + button {
+    margin-left: 0.8rem;
+}
+
+/* Küçük ekranda kart yüksekliğini biraz düşür */
+@media (max-width: 899.98px) {
+  #mainContent #controlProjectList .project-card { min-height: 520px; }
+  #mainContent #controlProjectList .project-card img { height: 200px; }
+}
+/* === KONTROL: Buton hizalama & eşit boy === */
+#mainContent #controlProjectList .project-card > div:last-of-type {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: auto !important;
+    width: 100%;
+    justify-content: center;       /* ortala */
+}
+
+#mainContent #controlProjectList .project-card > div:last-of-type .btn,
+#mainContent #controlProjectList .project-card > div:last-of-type button {
+    flex: 1 1 auto;                 /* esnek genişlik */
+    min-width: 120px;               /* çok daralmayı engelle */
+    max-width: 150px;               /* çok genişlemeyi engelle */
+    height: 44px;                   /* sabit yükseklik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;            /* taşma olmasın */
+}
+
+/* Küçük ekranda butonlar %100 genişlik olsun */
+@media (max-width: 899.98px) {
+  #mainContent #controlProjectList .project-card > div:last-of-type {
+      flex-direction: column;
+  }
+  #mainContent #controlProjectList .project-card > div:last-of-type .btn,
+  #mainContent #controlProjectList .project-card > div:last-of-type button {
+      max-width: none;
+      width: 100%;
+  }
+}
+/* Buton satırını biraz alta kaydır */
+#mainContent #controlProjectList .project-card > div:last-of-type {
+    margin-top: 1.5rem !important;  /* üst boşluğu artır */
+}
+/* Satın Alınan Projeler → Kart yüksekliklerini eşitle */
+#purchasedProjectList {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important;
+    gap: 2rem !important;
+    align-items: stretch !important; /* aynı yükseklik */
+}
+
+/* Kartların boyu sabit olsun */
+#purchasedProjectList .project-card {
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Buton satırı en alta sabitlensin */
+#purchasedProjectList .project-card > div:last-of-type {
+    margin-top: auto;
+    padding-top: 1.5rem; /* fotoğrafa biraz boşluk */
+}
+/* ====== KATEGORİLER — sade efekt + alt alta dizilim ====== */
+/* Bölüm konumu aynı, sadece listeyi dikeye çeviriyoruz */
+.hero .categories-section {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  /* Liste: ALT ALTA (dikey) + tam genişlik */
+  .hero .categories-section .categories-list {
+    display: flex;
+    flex-direction: column;     /* ← alt alta */
+    align-items: stretch;       /* kartlar genişlesin */
+    gap: .65rem;
+    width: 100%;
+    max-width: 820px;           /* çok geniş ekranlarda satır uzunluğunu sınırla */
+  }
+  
+  /* Kart: sade, temiz “list item” görünümü */
+  .hero .categories-section .category-card {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    width: 100%;                /* tam satır */
+    padding: .9rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+    will-change: box-shadow, transform;
+  }
+  
+  /* HOVER: hafif vurgu — gölge + sınır rengi */
+  .hero .categories-section .category-card:hover {
+    background-color: #fff;
+    border-color: #1E3A8A;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    transform: translateY(-1px);
+  }
+  
+  /* ACTIVE: çok küçük bastırma, ekstra gölge yok */
+  .hero .categories-section .category-card:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
+  
+  /* FOCUS: erişilebilirlik halkası (palete uyumlu) */
+  .hero .categories-section .category-card:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255,255,255,.95),
+      0 0 0 6px rgba(30,58,138,.55);
+    border-color: #1E3A8A;
+  }
+  
+  /* SEÇİLİ (opsiyonel .is-active) */
+  .hero .categories-section .category-card.is-active {
+    background: #1E3A8A;
+    color: #fff;
+    border-color: #1E3A8A;
+    box-shadow: 0 10px 24px rgba(30,58,138,.28);
+  }
+  
+  /* Önceki “shine/tilt” efektlerini tamamen kapat */
+  .hero .categories-section .category-card::before,
+  .hero .categories-section .category-card::after {
+    content: none !important;
+    background: none !important;
+  }
+  
+  /* Giriş animasyonu: sade fade + yukarı kayma (stagger hafif) */
+  @keyframes catFadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero .categories-section .categories-list > * {
+    animation: catFadeUp .28s ease both;
+  }
+  .hero .categories-section .categories-list > *:nth-child(1){animation-delay:.00s}
+  .hero .categories-section .categories-list > *:nth-child(2){animation-delay:.02s}
+  .hero .categories-section .categories-list > *:nth-child(3){animation-delay:.04s}
+  .hero .categories-section .categories-list > *:nth-child(4){animation-delay:.06s}
+  .hero .categories-section .categories-list > *:nth-child(5){animation-delay:.08s}
+  
+  /* Mobil: biraz daha kompakt */
+  @media (max-width: 768px) {
+    .hero .categories-section .categories-list { gap: .55rem; }
+    .hero .categories-section .category-card { padding: .8rem 1rem; font-size: .97rem; }
+  }
+  
+  /* Hareketi azalt seçeneğine saygı */
+  @media (prefers-reduced-motion: reduce) {
+    .hero .categories-section .categories-list > *,
+    .hero .categories-section .category-card {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+  /* ===== FIX: Hero içeriğini ortalamayı bırak, kategorileri sola hizala ===== */
+.hero { 
+    align-items: stretch !important;        /* section { align-items:center }'ı bozar */
+  }
+  .hero > * {
+    align-self: stretch !important;         /* içteki kapsayıcıyı genişlet */
+  }
+  
+  /* Bölüm yerleşimi (sola hizalı) */
+  .hero .categories-section {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100%;
+    margin: 0;                              /* olası auto margin'leri sıfırla */
+    padding-left: 0;
+  }
+  
+  /* Liste: ALT ALTA (dikey) + tam genişlik */
+  .hero .categories-section .categories-list {
+    display: flex !important;
+    flex-direction: column !important;      /* alt alta */
+    align-items: stretch !important;        /* butonlar satırı doldursun */
+    justify-content: flex-start !important;
+    gap: .65rem;
+    width: 100%;
+    max-width: 820px;
+  }
+  
+  /* Kart: sade, temiz görünüm + hafif hover */
+  .hero .categories-section .category-card {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    width: 100%;
+    padding: .9rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  }
+  
+  /* Hover/Focus/Active — sade */
+  .hero .categories-section .category-card:hover {
+    background-color: #fff;
+    border-color: #1E3A8A;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    transform: translateY(-1px);
+  }
+  .hero .categories-section .category-card:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255,255,255,.95),
+      0 0 0 6px rgba(30,58,138,.55);
+    border-color: #1E3A8A;
+  }
+  .hero .categories-section .category-card:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
+  
+  /* Seçili (opsiyonel .is-active) */
+  .hero .categories-section .category-card.is-active {
+    background: #1E3A8A;
+    color: #fff;
+    border-color: #1E3A8A;
+    box-shadow: 0 10px 24px rgba(30,58,138,.28);
+  }
+  
+  /* Önceki parlama/tilt efektleri tamamen kapalı kalsın */
+  .hero .categories-section .category-card::before,
+  .hero .categories-section .category-card::after { content: none !important; }
+  
+  /* Giriş animasyonu: sade */
+  @keyframes catFadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero .categories-section .categories-list > * {
+    animation: catFadeUp .28s ease both;
+  }
+  /* ===== KATEGORİLER — başlık üste, dikey liste, orta karar ve tema uyumlu efektler ===== */
+
+/* Hero düzenini genişletelim; ortalamayı kır */
+.hero { align-items: stretch !important; }
+.hero > * { align-self: stretch !important; }
+
+/* Bölüm: başlığı liste üstüne rozet gibi oturtmak için konumlandır */
+.hero .categories-section {
+  position: relative;
+  align-items: flex-start !important;
+  text-align: left !important;
+  width: 100%;
+  margin: 0;
+  padding-top: 2.4rem;               /* üstte rozet/badge için yer */
+}
+
+/* Başlık: küçük rozet (badge) gibi, listenin üstüne oturur */
+.hero .categories-section > h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-30%);
+  font-size: 1rem;                   /* daha küçük, rozet hissi */
+  line-height: 1;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #1E3A8A;                    /* tema mavisi */
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 10px;
+  padding: .4rem .65rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,.10);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Liste: ALT ALTA (dikey) ve tam genişlik */
+.hero .categories-section .categories-list {
+  display: flex !important;
+  flex-direction: column !important;     /* alt alta */
+  align-items: stretch !important;       /* butonlar tam satır */
+  justify-content: flex-start !important;
+  gap: .7rem;
+  width: 100%;
+  max-width: 820px;
+  padding-top: .1rem;
+}
+
+/* Kart: sade, temiz; tema uyumlu çerçeve ve cam hissi */
+.hero .categories-section .category-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .95rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.1;
+  text-decoration: none;
+  transition:
+    transform .16s ease,
+    box-shadow .24s ease,
+    border-color .24s ease,
+    background-color .24s ease;
+  will-change: transform, box-shadow;
+}
+
+/* İnce mavi “glow” + hafif yükselme */
+.hero .categories-section .category-card:hover {
+  transform: translateY(-1px);
+  border-color: #1E3A8A;
+  box-shadow: 0 10px 24px rgba(30,58,138,.18), 0 6px 16px rgba(0,0,0,.10);
+  background-color: #fff;
+}
+
+/* Basılı hissi */
+.hero .categories-section .category-card:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(0,0,0,.14);
+}
+
+/* Erişilebilir focus halkası (tema ile uyumlu) */
+.hero .categories-section .category-card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.95),
+    0 0 0 6px rgba(30,58,138,.55);
+  border-color: #1E3A8A;
+}
+
+/* Seçili (opsiyonel .is-active) */
+.hero .categories-section .category-card.is-active {
+  background: #1E3A8A;
+  color: #fff;
+  border-color: #1E3A8A;
+  box-shadow: 0 12px 28px rgba(30,58,138,.30);
+}
+
+/* --- KISA BEYAZ ŞERİT (shine) — kısaltıldı (~%38 genişlik) --- */
+.hero .categories-section .category-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 38%;
+  height: 42%;
+  transform: translateY(-50%) translateX(-140%);
+  border-radius: 8px;
+  background: linear-gradient(90deg,
+              rgba(255,255,255,0) 0%,
+              rgba(255,255,255,.55) 50%,
+              rgba(255,255,255,0) 100%);
+  opacity: .7;
+  transition: transform .6s ease;
+  pointer-events: none;
+  filter: blur(.4px);
+}
+.hero .categories-section .category-card:hover::after {
+  transform: translateY(-50%) translateX(180%);
+}
+
+/* İnce gradient-çerçeve (tema mavisi ile) */
+.hero .categories-section .category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(30,58,138,.35), rgba(0,0,0,.08));
+  /* Standart 'mask' eklenmiş uyumlu versiyon */
+mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+mask-composite: exclude;
+-webkit-mask-composite: xor;
+
+  opacity: .75;
+  pointer-events: none;
+}
+
+/* Giriş animasyonu: kısa fade-up (stagger hafif) */
+@keyframes catFadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero .categories-section .categories-list > * { animation: catFadeUp .26s ease both; }
+.hero .categories-section .categories-list > *:nth-child(2){animation-delay:.02s}
+.hero .categories-section .categories-list > *:nth-child(3){animation-delay:.04s}
+.hero .categories-section .categories-list > *:nth-child(4){animation-delay:.06s}
+.hero .categories-section .categories-list > *:nth-child(5){animation-delay:.08s}
+
+/* Mobil: biraz kompakt */
+@media (max-width: 768px) {
+  .hero .categories-section { padding-top: 2.2rem; }
+  .hero .categories-section > h2 { font-size: .95rem; }
+  .hero .categories-section .categories-list { gap: .55rem; }
+  .hero .categories-section .category-card { padding: .85rem 1rem; font-size: .97rem; }
+}
+
+/* Hareketi azalt tercihine saygı */
+@media (prefers-reduced-motion: reduce) {
+  .hero .categories-section .categories-list > *,
+  .hero .categories-section .category-card {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .hero .categories-section .category-card::after { display: none !important; }
+}
+/* ===== KATEGORİLER — metin kadar genişlik + mavi cam tema + kısa shine ===== */
+
+/* Liste: dikey; elemanları sol başa yığ, ama genişletme yok */
+.hero .categories-section .categories-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;  /* butonlar sola yaslansın */
+    gap: .7rem;
+  }
+  
+  /* Kartlar: satır genişliği = içerik kadar (fit-content), yine alt alta */
+  .hero .categories-section .category-card {
+    display: inline-flex !important;
+    align-items: center;
+    gap: .6rem;
+    width: auto !important;               /* tam genişliği iptal */
+    max-width: 100%;
+    align-self: flex-start;                /* sütunda sola otur */
+    padding: .85rem 1.05rem;
+    border-radius: 14px;
+    /* Beyaz yerine: arka planla uyumlu, hafif mavi cam */
+    /* Fallback + modern karışım birlikte: */
+    background: rgba(255,255,255,.78);
+    background: color-mix(in srgb, #1E3A8A 12%, white 88%);
+    border: 1px solid rgba(30,58,138,.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #051036;                        /* derin koyu, daha okunaklı */
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-decoration: none;
+    transition: transform .14s ease, box-shadow .22s ease, border-color .22s ease, background-color .22s ease;
+  }
+  
+  /* Hover: hafif mavi vurgu */
+  .hero .categories-section .category-card:hover {
+    transform: translateY(-1px);
+    border-color: #1E3A8A;
+    background: color-mix(in srgb, #1E3A8A 18%, white 82%);
+    box-shadow: 0 10px 24px rgba(30,58,138,.18), 0 6px 16px rgba(0,0,0,.10);
+  }
+  
+  /* Active: küçük bastırma */
+  .hero .categories-section .category-card:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(0,0,0,.14);
+  }
+  
+  /* Focus: erişilebilir halka */
+  .hero .categories-section .category-card:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255,255,255,.95),
+      0 0 0 6px rgba(30,58,138,.55);
+    border-color: #1E3A8A;
+  }
+  
+  /* Seçili (opsiyonel .is-active) */
+  .hero .categories-section .category-card.is-active {
+    background: #1E3A8A;
+    color: #fff;
+    border-color: #1E3A8A;
+    box-shadow: 0 12px 28px rgba(30,58,138,.30);
+  }
+  
+  /* — KISA ve METNE ORANTILI BEYAZ ŞERİT (shine) — 
+     * width yüzde ile verildiği için zaten buton genişliğine göre ölçeklenir
+     * başlangıçta solda kısa, hover’da içeriden kayıp gider
+  */
+  .hero .categories-section .category-card::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: .6rem;
+    width: 36%;                              /* kısa şerit (buton genişliğine göre) */
+    height: 42%;
+    transform: translateY(-50%) translateX(-130%);
+    border-radius: 10px;
+    background: linear-gradient(90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,.55) 55%,
+                rgba(255,255,255,0) 100%);
+    opacity: .7;
+    transition: transform .55s ease;
+    pointer-events: none;
+    filter: blur(.3px);
+  }
+  .hero .categories-section .category-card:hover::after {
+    transform: translateY(-50%) translateX(160%);
+  }
+  
+  /* Önceki “tam genişlik” kalıtımlarını kesin iptal etmek için yedek önlem */
+  .hero .categories-section .category-card::before { pointer-events: none; }
+  /* ===== KATEGORİLER BAŞLIĞI — tema uyumlu cam + shine ===== */
+.hero .categories-section > h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-30%);
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-weight: 800;
+    /* Arka plan uyumu — mavi cam */
+    background: rgba(255,255,255,.78);
+    background: color-mix(in srgb, #1E3A8A 12%, white 88%);
+    border: 1px solid rgba(30,58,138,.22);
+    border-radius: 10px;
+    padding: .45rem .7rem;
+    color: #051036;
+    box-shadow: 0 6px 14px rgba(0,0,0,.10);
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden; /* shine taşmasın */
+  }
+  
+  /* Shine efekti (kısa) */
+  .hero .categories-section > h2::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: .4rem;
+    width: 36%;
+    height: 50%;
+    transform: translateY(-50%) translateX(-140%);
+    border-radius: 8px;
+    background: linear-gradient(90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,.55) 50%,
+                rgba(255,255,255,0) 100%);
+    opacity: .7;
+    transition: transform .55s ease;
+    filter: blur(.3px);
+  }
+  
+  /* Hover olunca parlasın */
+  .hero .categories-section:hover > h2::after {
+    transform: translateY(-50%) translateX(160%);
+  }
+  /***** ============================================================
+      HOME → ALT TÜRLER PANELİ (kategorinin yanında, sade & modern)
+      Scope: .hero .categories-section ...
+      ============================================================ *****/
+
+/* Panel, sadece home kategorilerinde çalışsın */
+.hero .categories-section .categories-list { position: relative; }
+
+/* Kartın kendi düzeni — paneli içinde konumlandırabilelim */
+.hero .categories-section .category-card {
+  position: relative;              /* panel için referans */
+  overflow: visible;               /* panel taşabilir */
+}
+
+/* ALT TÜRLER PANELİ – varsayılan: görünmez */
+.hero .categories-section .category-card .subtype-panel {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);        /* kartın SAĞINA çıksın */
+  width: 360px;
+  max-width: min(360px, 54vw);
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,.16),
+    0 2px 8px rgba(30,58,138,.12);
+  color: #051036;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  /* animasyon */
+  transition:
+    opacity .18s ease,
+    transform .18s ease,
+    box-shadow .22s ease,
+    border-color .22s ease;
+  z-index: 1200;                   /* header ve modalların altında kalsın */
+}
+
+/* Panel başlık */
+.hero .categories-section .category-card .subtype-panel .subtype-title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: .02em;
+  margin-bottom: 8px;
+  color: #0b1736;
+}
+
+/* Chip alanı */
+.hero .categories-section .category-card .subtype-panel .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tekil alt tür “chip”leri */
+.hero .categories-section .category-card .subtype-panel .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .5rem .7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(30,58,138,.22);
+  background: linear-gradient(180deg, #ffffff, #f6f8ff);
+  color: #0b1736;
+  font-weight: 700;
+  font-size: .92rem;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.hero .categories-section .category-card .subtype-panel .chip:hover {
+  transform: translateY(-1px);
+  border-color: #1E3A8A;
+  box-shadow: 0 8px 18px rgba(30,58,138,.18);
+}
+.hero .categories-section .category-card .subtype-panel .chip:active {
+  transform: translateY(0);
+}
+
+/* Panel açık hali: .category-card.is-open */
+.hero .categories-section .category-card.is-open {
+  /* Kartın kendisine hafif vurgu (kategori kartlarıyla tutarlı) */
+  border-color: #1E3A8A !important;
+  box-shadow: 0 8px 20px rgba(30,58,138,.14);
+}
+.hero .categories-section .category-card.is-open .subtype-panel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Panelin karttan ayrıldığı çizgiyi yumuşat: ince bağlayıcı “ok” */
+.hero .categories-section .category-card.is-open .subtype-panel::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 12px;
+  width: 12px; height: 12px;
+  background: inherit;
+  border-left: 1px solid rgba(0,0,0,.10);
+  border-top: 1px solid rgba(0,0,0,.10);
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+/* Panel içinde ek alt bilgi satırı (opsiyonel) */
+.hero .categories-section .category-card .subtype-panel .note {
+  margin-top: 10px;
+  font-size: .88rem;
+  color: #1f2a44;
+  opacity: .9;
+}
+
+/* Daha dar ekranlarda paneli alta düşür (sağa sığmayabilir) */
+@media (max-width: 900px) {
+  .hero .categories-section .category-card .subtype-panel {
+    left: 0;
+    top: calc(100% + 10px);
+    width: min(92vw, 520px);
+    max-width: 92vw;
+  }
+  .hero .categories-section .category-card.is-open .subtype-panel::before {
+    left: 18px;
+    top: -6px;
+    border: none;
+    width: 10px; height: 10px;
+    border-left: 1px solid rgba(0,0,0,.10);
+    border-top: 1px solid rgba(0,0,0,.10);
+    transform: rotate(225deg);
+  }
+}
+
+/* Hareketi azalt tercihine saygı */
+@media (prefers-reduced-motion: reduce) {
+  .hero .categories-section .category-card .subtype-panel,
+  .hero .categories-section .category-card .subtype-panel .chip {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+/* Alt tür panelini biraz sağa kaydır */
+.subtype-panel {
+    position: absolute;
+    top: 50%;
+    left: 105%; /* Önceden 100% veya daha düşükse bunu artırdık */
+    transform: translateY(-50%);
+    background: #1e1e2f;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 16px;
+    min-width: 220px;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: fadeIn 0.25s ease-in-out;
+  }
+  
+  /* Panelin içeriği */
+  .subtype-panel .subtype-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  .subtype-panel .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .subtype-panel .chip {
+    background: #2d2d3d;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.2s ease;
+  }
+  
+  .subtype-panel .chip:hover {
+    background: #3f3f5a;
+  }
+  
+  .subtype-panel .note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50%) translateX(-10px); }
+    to { opacity: 1; transform: translateY(-50%) translateX(0); }
+  }
+ .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.modal.show {
+  display: block;
+}
+.modal-content {
+  background: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.btn {
+  background: #1E3A8A;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.message {
+  margin-top: 10px;
+  font-size: 14px;
+}
+/* Proje Detay Kartı */
+.project-detail-card {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #1E3A8A;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.project-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.project-desc {
+  color: #374151;
+}
+
+.project-price {
+  color: #059669;
+  font-weight: bold;
+}
+
+.project-actions {
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* Butonlar */
+.btn {
+  background: #1E3A8A;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #274BB5;
+}
+
+.btn-disabled {
+  background: #9CA3AF;
+  cursor: not-allowed;
+}
+/* Proje detay kartı */
+.project-detail-card {
+  background: #fff;              /* beyaz arka plan */
+  border-radius: 12px;           /* köşeleri yumuşat */
+  padding: 24px;
+  max-width: 700px;              /* genişlik sabitle */
+  margin: 30px auto;             /* ortala */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* gölge efekti */
+  border: 1px solid #e5e7eb;
+}
+
+/* Başlık */
+.project-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #1E3A8A;
+  text-align: center;
+}
+
+/* Resim */
+.project-image {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 300px;         /* sabit genişlik */
+  height: 200px;        /* sabit yükseklik */
+  object-fit: cover;    /* orantıyı bozma ama kırp */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Açıklama */
+.project-desc {
+  display: block;
+  margin-top: 6px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Fiyat rengi */
+.project-price {
+  color: #16a34a;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Buton */
+.project-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn.buy-btn {
+  background: #1E3A8A;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn.buy-btn:hover {
+  background: #2563eb;
+}
+
+.btn-disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+}
+/* === Geri Butonu === */
+#backBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #1E3A8A;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999; /* Her şeyin üstünde olsun */
+  display: inline-block; /* Kaybolmaması için garanti */
+}
+
+#backBtn:hover {
+  background-color: #163273;
+}
+
+#backBtn.hidden {
+  display: none !important; /* Gizlenmesi gerektiğinde */
+}
+/* === Geri Butonu === */
+#backBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* Hover efekti */
+#backBtn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #163273, #2563EB);
+}
+
+/* Aktif tıklama animasyonu */
+#backBtn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+#backBtn.hidden {
+  display: none !important;
+}
+/* Geri butonu özel stil */
+#backBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  background: #1E3A8A; /* Lacivert ton */
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* Hover efekti */
+#backBtn:hover {
+  background: #3B82F6; /* Maviye geçiş */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* Tıklama efekti */
+#backBtn:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+/* Ödeme formu stil */
+.payment-form {
+  margin-top: 1rem;
+}
+
+.payment-form label {
+  display: block;
+  margin: 8px 0 4px;
+  font-weight: 600;
+  color: #333;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.payment-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.payment-actions .btn {
+  flex: 1;
+}
+
+.btn-cancel {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #d32f2f;
+  transform: scale(1.02);
+}
+/* Ödeme formu kutusu animasyon */
+.project-detail-card {
+  animation: fadeSlideIn 0.4s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.payment-actions .btn {
+  transition: all 0.2s ease;
+}
+
+.payment-actions .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+/* ---- Tek kart (detay/ödeme) görünümü merkezleme ---- */
+#projectList.single-view{
+  display: flex !important;           /* grid'i ez */
+  flex-direction: column;
+  align-items: center;                 /* yatayda ortala */
+  justify-content: flex-start;         /* dikeyde üstten başlasın */
+  min-height: 60vh;
+  padding: 24px 12px;
+  gap: 16px;
+}
+
+/* Kart genişliği ve stil */
+#projectList.single-view .project-detail-card,
+#projectList.single-view .payment-card{
+  width: 100%;
+  max-width: 720px;                    /* ortalanan kart genişliği */
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 22px;
+}
+
+/* Ödeme formu düzeni */
+.payment-form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.payment-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+.site-logo {
+  width: 100px;   /* çok küçük olur, istersen 60-100px arası deneyebilirsin */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

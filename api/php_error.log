@@ -1,0 +1,15 @@
+[14-Aug-2025 20:22:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'p.subtype' in 'field list' in C:\laragon\www\api\projects.php:42
+Stack trace:
+#0 C:\laragon\www\api\projects.php(42): mysqli->query('\r\n        SELEC...')
+#1 {main}
+  thrown in C:\laragon\www\api\projects.php on line 42
+[14-Aug-2025 20:22:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'p.subtype' in 'field list' in C:\laragon\www\api\projects.php:42
+Stack trace:
+#0 C:\laragon\www\api\projects.php(42): mysqli->query('\r\n        SELEC...')
+#1 {main}
+  thrown in C:\laragon\www\api\projects.php on line 42
+[14-Aug-2025 20:24:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'p.subtype' in 'field list' in C:\laragon\www\api\projects.php:42
+Stack trace:
+#0 C:\laragon\www\api\projects.php(42): mysqli->query('\r\n        SELEC...')
+#1 {main}
+  thrown in C:\laragon\www\api\projects.php on line 42

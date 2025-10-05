@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Knoovynox</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  
+  <header>
+    <!-- Sol üst sabit geri butonu -->
+<button id="globalBackBtn" class="btn back-btn hidden">← Geri</button>
+
+
+    <nav class="navbar">
+      <a href="#" class="logo">
+        
+<img src="assets/KnoovyNox logo yeni siyah.png" alt="KNOOVYNOX Logo" class="site-logo">
+
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" data-page="home" class="active">Ana Sayfa</a></li>
+        <li><a href="#" data-page="projects">Projeler</a></li>
+        <li><a href="#" data-page="add-project">Proje Yükle</a></li>
+        <li><a href="#" data-page="control">Projeleri Kontrol Et</a></li>
+        <li><a href="#" data-page="login" id="navLogin">Giriş Yap</a></li>
+        <li><a href="#" data-page="register" id="navRegister">Kayıt Ol</a></li>
+      </ul>
+      
+      <!-- Profil / Menü -->
+      <div id="profileContainer" class="hidden">
+        <div id="profileMenuBtn">
+          <img id="profileAvatar" src="assets\default-avatar (2).png" alt="Profil Avatarı"/>
+          <span id="profileUsername"></span>
+        </div>
+        <div id="profileMenu" class="hidden">
+          <button id="profileViewBtn">Profil</button>
+          <button id="purchasedProjectsBtn">Satın Alınan Projeler</button>
+          <button id="logoutBtn">Çıkış Yap</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Ana içerik: script.js sayfaları buraya yükler -->
+  <main id="mainContent">
+    <!-- Burada proje kartları JS ile üretilecek -->
+    <!-- Örnek kart yapısı -->
+    <div class="project-card" onclick="window.location.href='view-project.php?id=1'">
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Knoovynox. Tüm Hakları Saklıdır.
+  </footer>
+
+  <!-- Profil Modal -->
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Profil Bilgileriniz</h2>
+      <form id="profileForm" novalidate enctype="multipart/form-data">
+        <label for="profileEmail">E-posta</label>
+        <input type="text" id="profileEmail" name="profileEmail" placeholder="E-postanızı girin" required />
+        <label for="profileImageFile">Profil Fotoğrafı (.png, .jpg, .jpeg)</label>
+        <input type="file" id="profileImageFile" name="profileImageFile" accept=".png,.jpg,.jpeg" />
+        <label for="profileAge">Yaş</label>
+        <input type="number" id="profileAge" name="profileAge" min="13" max="120" placeholder="Yaşınızı girin" />
+        <label for="profileBirthDate">Doğum Tarihi</label>
+        <input type="date" id="profileBirthDate" name="profileBirthDate" />
+        <button type="submit" class="btn">Bilgileri Güncelle</button>
+        <p class="message" id="profileMessage"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Proje Detay Modal -->
+  <div id="projectDetailModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeProjectModal" class="close">&times;</span>
+      <div id="projectDetailContent"></div>
+      <button id="buyProjectBtn" class="btn">Satın Al</button>
+    </div>
+  </div>
+
+  <!-- Ödeme Modal -->
+  <div id="paymentModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closePaymentModal" class="close">&times;</span>
+      <h2>Ödeme Yap</h2>
+      <form id="paymentForm" novalidate>
+        <label for="cardNumber">Kart Numarası</label>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="16 haneli kart numarası" maxlength="16" required />
+        <label for="cardExpiry">Son Kullanma Tarihi (MM/YY)</label>
+        <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" maxlength="5" required />
+        <label for="cardCvc">CVC</label>
+        <input type="text" id="cardCvc" name="cardCvc" placeholder="3 haneli CVC" maxlength="3" required />
+        <button type="submit" class="btn">Ödeme Yap</button>
+        <p class="message" id="paymentMessage"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Satın Alınan Projeler Listesi Modal -->
+  <div id="purchasedProjectsModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closePurchasedProjectsModal" class="close">&times;</span>
+      <h2>Satın Alınan Projeler</h2>
+      <div id="purchasedProjectList"></div>
+    </div>
+  </div>
+
+  <!-- Satın Alınan Proje DETAY Modal -->
+  <div id="purchasedProjectDetailModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closePurchasedProjectDetailModal" class="close">&times;</span>
+      <div id="purchasedProjectDetailContent"></div>
+    </div>
+  </div>
+
+</body>
+</html>
