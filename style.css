@@ -3126,3 +3126,832 @@ mask-composite: exclude;
 .category-btn {
   color: #ffffff !important;
 }
+/* 🎨 Sadece Proje Yükle bölümünü şıklaştırır */
+section h2 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+/* Altında zarif bir çizgi efekti */
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  border-radius: 2px;
+}
+
+/* Formu modernleştir */
+#addProjectForm {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 25px 35px;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#addProjectForm:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 35px rgba(0, 123, 255, 0.25);
+}
+
+/* Label düzeni */
+#addProjectForm label {
+  display: block;
+  color: #d8d8d8;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* Input, textarea, select görünümü */
+#addProjectForm input,
+#addProjectForm textarea,
+#addProjectForm select {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+#addProjectForm input:focus,
+#addProjectForm textarea:focus,
+#addProjectForm select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 6px rgba(0, 191, 255, 0.4);
+  outline: none;
+}
+
+/* Buton */
+#addProjectForm .btn {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+#addProjectForm .btn:hover {
+  background: linear-gradient(90deg, #00bfff, #007bff);
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+/* 🔹 Proje Yükle başlık rengi daha canlı mavi */
+section h2 {
+  text-align: center;
+  color: #00aaff; /* Canlı ama gözü yormayan mavi */
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+section h2::after {
+  background: linear-gradient(90deg, #00aaff, #007bff);
+}
+
+/* 🔹 Form kutusu ve içi daha yumuşak kontrastta */
+#addProjectForm {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 25px 35px;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 170, 255, 0.15);
+}
+
+/* 🔹 Etiketler */
+#addProjectForm label {
+  color: #b9dcff;
+  font-weight: 600;
+}
+
+/* 🔹 Input ve Select renkleri */
+#addProjectForm input,
+#addProjectForm textarea,
+#addProjectForm select {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  color: #e6f3ff; /* Yazılar açık */
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+/* 🔹 Placeholder yazı rengi */
+#addProjectForm input::placeholder,
+#addProjectForm textarea::placeholder {
+  color: rgba(200, 220, 255, 0.5);
+}
+
+/* 🔹 Focus efekti */
+#addProjectForm input:focus,
+#addProjectForm textarea:focus,
+#addProjectForm select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+  outline: none;
+}
+
+/* 🔹 Select menüsü (Tür & Alt Tür) görünür hale gelir */
+#addProjectForm select option {
+  background-color: #10131a;
+  color: #eaf6ff;
+}
+
+/* 🔹 Butonlar canlı, sitedeki temayla aynı renk */
+#addProjectForm .btn {
+  background: linear-gradient(90deg, #008cff, #00c6ff);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+#addProjectForm .btn:hover {
+  background: linear-gradient(90deg, #00c6ff, #008cff);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+/* ==========================================
+   🎯 Proje Yükle — Modern Şık Tema
+   ========================================== */
+
+/* Başlık */
+section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00bfff;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #00bfff, #007bff);
+  border-radius: 2px;
+}
+
+/* Form kutusu */
+#addProjectForm {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 191, 255, 0.15);
+  border-radius: 14px;
+  padding: 35px 40px;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.1);
+  transition: 0.3s ease;
+}
+
+#addProjectForm:hover {
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.25);
+  transform: scale(1.01);
+}
+
+/* Label'lar */
+#addProjectForm label {
+  color: #cce9ff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Inputlar */
+#addProjectForm input,
+#addProjectForm textarea,
+#addProjectForm select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+/* Focus efekti */
+#addProjectForm input:focus,
+#addProjectForm textarea:focus,
+#addProjectForm select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.35);
+  outline: none;
+}
+
+/* Placeholder yazıları */
+#addProjectForm input::placeholder,
+#addProjectForm textarea::placeholder {
+  color: rgba(220, 235, 255, 0.5);
+}
+
+/* Tür ve Alt Tür menüleri — beyaz arka plan, siyah yazı */
+#addProjectForm select option {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Buton */
+#addProjectForm .btn {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#addProjectForm .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s;
+}
+
+#addProjectForm .btn:hover::before {
+  left: 100%;
+}
+
+#addProjectForm .btn:hover {
+  background: linear-gradient(90deg, #00bfff, #007bff);
+  box-shadow: 0 0 18px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+/* ==========================
+   💠 Knoovynox Form Renk Teması
+   ========================== */
+
+#addProjectForm {
+  background: linear-gradient(145deg, #0b1220, #111a2c);
+  border: 1px solid rgba(0, 183, 255, 0.25);
+  border-radius: 16px;
+  padding: 35px 40px;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 183, 255, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+}
+
+#addProjectForm:hover {
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.05);
+  transform: scale(1.005);
+}
+
+#addProjectForm label {
+  color: #b8d9ff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#addProjectForm input,
+#addProjectForm textarea,
+#addProjectForm select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 191, 255, 0.25);
+  color: #f0f6ff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+#addProjectForm input:focus,
+#addProjectForm textarea:focus,
+#addProjectForm select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* Tür & Alt Tür menüsü */
+#addProjectForm select option {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Placeholder yazılar */
+#addProjectForm input::placeholder,
+#addProjectForm textarea::placeholder {
+  color: rgba(220, 230, 255, 0.5);
+}
+
+/* Başlık efektiyle aynı mavi çizgi */
+section h2 {
+  color: #00bfff;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+#addProjectForm .btn {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+}
+
+#addProjectForm .btn:hover {
+  background: linear-gradient(90deg, #00c6ff, #007bff);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+/* =====================================
+   💠 Şeffaf Proje Yükle Tasarımı
+   ===================================== */
+
+#addProjectForm {
+  background: rgba(255, 255, 255, 0.08); /* yarı saydam beyaz-mavi karışımı */
+  backdrop-filter: blur(12px); /* cam efekti */
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 16px;
+  padding: 35px 40px;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+#addProjectForm:hover {
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.3);
+  transform: scale(1.01);
+}
+
+/* Başlık */
+section h2 {
+  text-align: center;
+  color: #00bfff;
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Label */
+#addProjectForm label {
+  color: #e0f4ff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Input & Textarea & Select */
+#addProjectForm input,
+#addProjectForm textarea,
+#addProjectForm select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+#addProjectForm input:focus,
+#addProjectForm textarea:focus,
+#addProjectForm select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.35);
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+/* Tür & Alt Tür menüsü (beyaz zemin - siyah yazı) */
+#addProjectForm select option {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Placeholder */
+#addProjectForm input::placeholder,
+#addProjectForm textarea::placeholder {
+  color: rgba(230, 240, 255, 0.6);
+}
+
+/* Buton */
+#addProjectForm .btn {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+#addProjectForm .btn:hover {
+  background: linear-gradient(90deg, #00bfff, #007bff);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+/* ===============================
+   💎 Giriş Yap Formu (Knoovynox)
+   =============================== */
+
+/* Başlık */
+section h2 {
+  text-align: center;
+  color: #00bfff;
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Form tasarımı */
+#loginForm {
+  background: rgba(255, 255, 255, 0.08); /* şeffaf cam görünümü */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 16px;
+  padding: 35px 40px;
+  max-width: 450px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+#loginForm:hover {
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.3);
+  transform: scale(1.01);
+}
+
+/* Etiketler */
+#loginForm label {
+  color: #e0f4ff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Input alanları */
+#loginForm input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+
+#loginForm input:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.35);
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+/* Placeholder */
+#loginForm input::placeholder {
+  color: rgba(230, 240, 255, 0.6);
+}
+
+/* Buton */
+#loginForm .btn {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+#loginForm .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s;
+}
+
+#loginForm .btn:hover::before {
+  left: 100%;
+}
+
+#loginForm .btn:hover {
+  background: linear-gradient(90deg, #00bfff, #007bff);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Mesaj kısmı */
+#loginForm .message {
+  text-align: center;
+  color: #9fd7ff;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+/* ===============================
+   🧩 Navbar Giriş & Kayıt Düzeltmesi
+   =============================== */
+
+/* Tüm navbar linkleriyle aynı yükseklik ve hizalama */
+.nav-links a[data-page="login"],
+.nav-links a[data-page="register"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 14px;
+  color: #ffffff;
+  background: transparent;
+  border-radius: 6px;
+  vertical-align: middle;
+  transition: all 0.25s ease;
+  position: relative;
+  top: 0; /* yazıyı hizalamak için */
+}
+
+/* Hover efekti: tam beyaz dikdörtgen, yazı düzgün ortada kalır */
+.nav-links a[data-page="login"]:hover,
+.nav-links a[data-page="register"]:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  transition: all 0.25s ease;
+}
+
+/* Hover sonrası yazı boyutu değişmesin */
+.nav-links a[data-page="login"],
+.nav-links a[data-page="register"],
+.nav-links a[data-page="login"]:hover,
+.nav-links a[data-page="register"]:hover {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+/* ===================================
+   💠 Kayıt Ol Sayfası (Modern Cam Stil)
+   =================================== */
+
+#registerForm {
+  background: rgba(255, 255, 255, 0.08); /* cam efekti */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 191, 255, 0.25);
+  border-radius: 18px;
+  padding: 40px 45px;
+  max-width: 520px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+#registerForm:hover {
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Başlık */
+#registerForm h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+}
+
+/* Etiketler */
+#registerForm label {
+  display: block;
+  color: #d9e8ff;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+
+/* Giriş alanları */
+#registerForm input,
+#registerForm select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+#registerForm input:focus,
+#registerForm select:focus {
+  outline: none;
+  border-color: #00bfff;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Dosya yükleme alanı */
+#registerForm input[type="file"] {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Buton */
+#registerForm button {
+  width: 100%;
+  background: linear-gradient(135deg, #0078ff, #00bfff);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+#registerForm button:hover {
+  background: linear-gradient(135deg, #00bfff, #0078ff);
+  box-shadow: 0 0 18px rgba(0, 191, 255, 0.4);
+  transform: scale(1.02);
+}
+
+/* Mesaj kısmı */
+#registerMessage {
+  text-align: center;
+  color: #a7e0ff;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+/* ===================================
+   👤 Profil Formu (Modern Cam Stil)
+   =================================== */
+
+#profileForm {
+  background: rgba(255, 255, 255, 0.08); /* cam efekti */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 191, 255, 0.25);
+  border-radius: 18px;
+  padding: 40px 45px;
+  max-width: 520px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+#profileForm:hover {
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Başlık */
+#profileForm h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+}
+
+/* Etiketler */
+#profileForm label {
+  display: block;
+  color: #d9e8ff;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+
+/* Giriş alanları */
+#profileForm input,
+#profileForm select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+#profileForm input:focus,
+#profileForm select:focus {
+  outline: none;
+  border-color: #00bfff;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Dosya yükleme alanı */
+#profileForm input[type="file"] {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Güncelleme butonu */
+#profileForm button {
+  width: 100%;
+  background: linear-gradient(135deg, #0078ff, #00bfff);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+#profileForm button:hover {
+  background: linear-gradient(135deg, #00bfff, #0078ff);
+  box-shadow: 0 0 18px rgba(0, 191, 255, 0.4);
+  transform: scale(1.02);
+}
+
+/* Mesaj alanı */
+#profileMessage {
+  text-align: center;
+  color: #a7e0ff;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
